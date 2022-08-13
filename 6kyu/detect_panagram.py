@@ -11,4 +11,14 @@ def is_pangram(s):
     for i in range(len(abc)):
         list.append(s.lower().count(abc[i]))
     return False if 0 in list else True
+
+# Best Practices 
+import string
+
+def is_pangram(s):
+    s = s.lower()
+    for char in 'abcdefghijklmnopqrstuvwxyz':
+        if char not in s:
+            return False
+    return True
         

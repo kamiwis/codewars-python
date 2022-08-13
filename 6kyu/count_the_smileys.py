@@ -16,3 +16,21 @@
 # My Solution
 def count_smileys(arr):
     return sum(map(lambda x: 1 if x in [":)", ":-)", ":~)", ":D", ":-D", ":~D", ";)", ";-)", ";~)", ";D", ";-D", ";~D"] else 0, arr))
+
+# Best Practices-1
+from re import findall
+def count_smileys(arr):
+    return len(list(findall(r"[:;][-~]?[)D]", " ".join(arr))))
+
+# Best Practices - 2
+def count_smileys(arr):
+    eyes = [":", ";"]
+    noses = ["", "-", "~"]
+    mouths = [")", "D"]
+    count = 0
+    for eye in eyes:
+        for nose in noses:
+            for mouth in mouths:
+                face = eye + nose + mouth
+                count += arr.count(face)
+    return count
